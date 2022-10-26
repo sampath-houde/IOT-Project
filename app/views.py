@@ -1,34 +1,38 @@
 import imp
+import re
 from django.shortcuts import render
 from .query import *
-from chart_studio import plotly
-import plotly.graph_objects as go
-import plotly.express as px
 import pandas as pd
-
-
-
-def Plotgraph():
-    data=CountPersons()
-    data=  pd.DataFrame(data.items(), columns=['Date', 'Count'])
-    fig = px.bar(data,x='Date', y='Count')
-    return fig.to_html()
+import plotly.express as px
 
 
 
 def home(request):
-    graph=Plotgraph()
-    data=Details()
-    tmp=data['payload']['Temperature']
-    person=data['payload']['Person count']
-    light="off"
-    if person!=0:
-        light="onn"
+    data=query()
+    t1=data['Gas LPG']
+    t2=data['Humidity']
+    t3=data['CO VAL']
+    t4=data['SMOKE']
+    t5=data['temperature']
+    t6=data['timestamp']
+
+    graph = Plotgraph()
 
     context={
-        'graph':graph,
-        'tmp':tmp,
-        'person':person,
-        'light':light
+        't1':t1,
+        't2':t2,
+        't3':t3,
+        't4':t4,
+        't5':t5,
+        't6':t6
+        # 'graph':graph
     }
     return render(request,'home.html',context)
+
+
+def Plotgraph():
+    data = TempVsTime()
+#     data=TempVsTime()
+#     data=  pd.DataFrame(data.items(), columns=['Date', 'Temp'])
+#     fig = px.bar(data,x='Date', y='Temp')
+#     return fig.to_html()

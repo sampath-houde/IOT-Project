@@ -12,19 +12,31 @@
   </head>
   <body>
 
-    <center><h1>Automatic Light Controller</h1></center>
+    <center><h1>Kitchen Safety</h1></center>
     <br>
     <div style="border:2px solid black; border-radius:10px;" class="container">
-      <h4>&nbsp &nbsp The Number of person currently in room is {{person}}</h4>
+      <h4>&nbsp &nbsp Time = {{t6}}</h4>
+    </div>
+    <div style="border:2px solid black; border-radius:10px;" class="container">
+      <h4>&nbsp &nbsp Temperature = {{t5}}</h4>
+    </div>
+    <div style="border:2px solid black; border-radius:10px;" class="container">
+      <h4>&nbsp &nbsp Humidity = {{t2}}</h4>
+    </div>
+    <div style="border:2px solid black; border-radius:10px;" class="container">
+      <h4>&nbsp &nbsp Gas Lpg = {{t1}}</h4>
+    </div>
+    <div style="border:2px solid black; border-radius:10px;" class="container">
+      <h4>&nbsp &nbsp Smoke = {{t4}}</h4>
+    </div>
+    <div style="border:2px solid black; border-radius:10px;" class="container">
+      <h4>&nbsp &nbsp CO VAL = {{t3}}</h4>
     </div>
     <br>
-    <div style="border:2px solid black; border-radius:10px;" class="container">
-    <h4>&nbsp &nbsp Status of light is {{light}} </h4>
-    </div>
     <br>
-    <div style="border:2px solid black; border-radius:10px;" class="container">
+    <!-- <div style="border:2px solid black; border-radius:10px;" class="container">
     <h4>&nbsp &nbsp The temperature of room is {{tmp}} degree Celcius  </h4>
-    </div>
+    </div> -->
 
    {{graph |safe}}
    
