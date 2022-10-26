@@ -16,7 +16,8 @@ def home(request):
     t5=data['temperature']
     t6=data['timestamp']
 
-    graph = Plotgraph()
+    tempVsTime = tempVsTimeGraph()
+    smokeVsTime = smokeVsTimeGraph()
 
     context={
         't1':t1,
@@ -24,15 +25,23 @@ def home(request):
         't3':t3,
         't4':t4,
         't5':t5,
-        't6':t6
-        # 'graph':graph
+        't6':t6,
+        'tempVsTime':tempVsTime,
+        'smokeVsTime':smokeVsTime
     }
     return render(request,'home.html',context)
 
 
-def Plotgraph():
+def tempVsTimeGraph():
     data = TempVsTime()
-#     data=TempVsTime()
-#     data=  pd.DataFrame(data.items(), columns=['Date', 'Temp'])
-#     fig = px.bar(data,x='Date', y='Temp')
-#     return fig.to_html()
+    data=  pd.DataFrame(data, columns=['Date', 'Temp'])
+    fig = px.bar(data,x='Date', y='Temp')
+    fig.update_yaxes(rangemode="tozero")
+    return fig.to_html()
+
+def smokeVsTimeGraph():
+    data = SmokeVsTime()
+    data=  pd.DataFrame(data, columns=['Date', 'Smoke'])
+    fig = px.bar(data,x='Date', y='Smoke')
+    fig.update_yaxes(rangemode="tozero")
+    return fig.to_html()
