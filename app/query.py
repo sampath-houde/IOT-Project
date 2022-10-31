@@ -143,22 +143,21 @@ def SmokeVsTime():
                if date2 == uniqueDate:
                     customDict['readings']['smoke'].append(data['smoke'])
           newData.append(customDict)
-
      smoke = []
 
      for data in newData:
           smoke.append( 
                max(data['readings']['smoke']) 
           )
-     
      newList = []
      distinctDates = list(distinctDates)
-     for i in range(0,len(smoke)):
+     for i in range(1,len(smoke)):
           t=[]
           t.append(distinctDates[i])
           t.append(smoke[i])
           newList.append(t)
      newList.sort(key=lambda x: x[1])
+     print(newList)
      return newList
 
 

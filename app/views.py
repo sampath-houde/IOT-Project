@@ -8,7 +8,8 @@ import plotly.express as px
 
 
 def home(request):
-    data=query()
+    #data=query()
+    data={'Gas LPG': 34324,'Humidity': 32234, 'CO VAL':32,'SMOKE': 2334, 'temperature':43, 'timestamp':2022-10-20}
     t1=data['Gas LPG']
     t2=data['Humidity']
     t3=data['CO VAL']
@@ -43,5 +44,4 @@ def smokeVsTimeGraph():
     data = SmokeVsTime()
     data=  pd.DataFrame(data, columns=['Date', 'Smoke'])
     fig = px.bar(data,x='Date', y='Smoke')
-    fig.update_yaxes(rangemode="tozero")
     return fig.to_html()
